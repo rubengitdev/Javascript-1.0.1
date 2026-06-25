@@ -1,14 +1,15 @@
 // pseudo code
 
-<<<<<<< Updated upstream
 //
-=======
 // Declare empty array called inventory with product object (object of strings) as argument
 // - key 1: product name = string lowercase
 // - key 2: quantity = integer
 // Example data:
 // {name: "apple", quantity: 2},
 // {name: "mango", quantity: 10},
+// Declare empty array called inventory with product object (object of strings) as argument
+// - key: product name = string lowercase
+// - key: quantity = integer
 const inventory = [];
 
 // Declare function called findProductIndex with product name as argument
@@ -17,6 +18,11 @@ const inventory = [];
 // For each product: compare productName with the search name
 //      condition 1: if found: Return the index
 //      condition 2: if not found / loop finishes: return -1
+// function findProductIndex(productName)
+// convert productname into lowercase
+// loop through inventory
+//      condition: if the product's name from inventory is equal to productName): return current index
+//          otherwise, return -1
 
 function findProductIndex(productName) {
   const productNameLowerCase = productName.toLowerCase();
@@ -51,44 +57,42 @@ function addProduct(newProduct) {
     });
     console.log(`${productNameLowerCase} added to inventory`);
   }
+// Declare function addProduct with product object (object of strings) as argument
+// ----- Pseudo code -----
+// call check if product exist. Call function findProductIndex()
+//      condition 1: if product exist add quantity passed into the function
+//          log(<product-name> quantity updated)
+//      condition 2: otherwise, add product to the inventory
+//          log(<product-name> is added to the inventory)
+
+function addProduct(newProduct) {
+  const checkProductExist = findProductIndex(newProduct.name);
+
+  if (checkProductExist >= 0) {
+    const updatedQuantity =
+      inventory[checkProductExist].quantity + newProduct.quantity;
+    inventory[checkProductExist].quantity = updatedQuantity;
+    console.log(`${newProduct.name} quantity updated`);
+  } else {
+    inventory.push(newProduct);
+    console.log(`${newProduct.name} added to inventory`);
+  }
+  return checkProductExist;
 }
 
 // Declare function removeProduct with product name and quantity as argument
 // ----- Pseudo code -----
-// Find product index using findProductIndex() function
-//      condition 1: if product does not exist: log (<product-name> not found) and stop the execution. otherwise, get the product object from the inventory.
-//      condition 2: if requested quantity is greater then inventory product quantity: log (Not enough <product-name> available, remaining pieces: <product-quantity>), then stop the execution.
-// substract inventory quantity with the requested quantity
-//      condition 3: if the quantity after substraction is equal to 0: remove the product object from the inventory.
-//  log remaining quantity
+// find the product index
+//      condition: if product not found: log not found
+//          else: get the product
+//          condition: if requested quantity is greater than available quantity: log "Not enough <product-name> available, remaining pieces: <product-quantity>"
+//          else: substract quantity
+//          condition: if quantity becomes zero: remove product from inventory
+//          else: log "Remaining <product-name> pieces: <product-quantity>"
 
-function removeProduct(productName, productQuantity) {
-  const productNameLowerCase = productName.toLowerCase();
-  const productIndex = findProductIndex(productNameLowerCase);
-  const product = inventory[productIndex];
+function removeProduct(productName, quantity) {
+  const checkProductExist = findProductIndex(newProduct.name);
 
-  if (productIndex === -1) {
-    console.log(`${productNameLowerCase} not found`);
-    return;
-  }
-
-  if (productQuantity > product.quantity) {
-    console.log(
-      `Not enough ${productNameLowerCase} available, remaining pieces: ${product.quantity}`,
-    );
-    return;
-  }
-
-  product.quantity -= productQuantity;
-  console.log(`Remaining ${productNameLowerCase} pieces: ${product.quantity}`);
-
-  if (product.quantity === 0) {
-    inventory.splice(productIndex, 1);
+  if (!checkProductExist) {
   }
 }
-
-console.log(addProduct({ name: "FLOUR", quantity: 5 }));
-console.log(addProduct({ name: "FLOUR", quantity: 5 }));
-console.log(removeProduct("FLOUR", 5));
-console.log(removeProduct("FLOUR", 10));
->>>>>>> Stashed changes
