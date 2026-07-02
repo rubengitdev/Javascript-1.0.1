@@ -2,9 +2,12 @@
 // const test = regex.test("e");
 // console.log(test);
 
-const regex = /javascript/g;
-const str = "javascript is the best we love javascript";
-const matched = str.match(regex);
-const replaced = str.replace(regex, "JavaScript");
-console.log(matched);
-console.log(replaced);
+// const regex = /javascript/g;
+// const str = "javascript is the best we love javascript";
+// const matched = str.match(regex);
+// const replaced = str.replace(regex, "JavaScript");
+// console.log(matched);
+// console.log(replaced);
+
+const regex = /(cat)\s+\1/i;
+console.log(regex.test("catcat"));
